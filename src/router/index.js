@@ -21,6 +21,26 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/teams',
+      name: 'teams',
+      component: () => import('../views/TeamsView.vue')
+    },
+    {
+      path: '/teams/:id',
+      name: 'team-details',
+      component: () => import('../views/TeamDetailView.vue')
+    },
+    {
+      path: '/create-team',
+      name: 'create-teams',
+      component: () => import('../views/CreateTeamView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/GoogleLoginView.vue')
     }
   ]
 })
