@@ -20,15 +20,7 @@ class Api {
             headers: this.headers()
         })
 
-        // TODO: Move it to a separate function
-        if (res.status === 200) {
-            return res.data;
-        } else if (res.status === 401) {
-            throw new UnauthorizedApiError();
-        } else { // 5xx or other type of issues like network error
-            // TODO: convert it to an exception
-            console.log(res)
-        }
+        return this.parseResponse(res);
     }
 
     async createTeam(name) {
@@ -39,6 +31,10 @@ class Api {
             headers: this.headers()
         })
 
+        return this.parseResponse(res);
+    }
+
+    parseResponse(res) {
         // TODO: Move it to a separate function
         if (res.status === 200) {
             return res.data;
