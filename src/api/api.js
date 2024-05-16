@@ -7,10 +7,6 @@ class Api {
         this.baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
     }
 
-    s() {
-        return this.baseUrl;
-    }
-
     headers() {
         return {
             "Authorization": store.getters.authHeader,
