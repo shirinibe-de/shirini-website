@@ -15,7 +15,6 @@ class Api {
 
     async getTeams() {
         const url = `${this.baseUrl}/v1/teams`;
-
         const res = await axios.get(url, {
             headers: this.headers()
         })
@@ -30,6 +29,15 @@ class Api {
         },{
             headers: this.headers()
         })
+
+        return this.parseResponse(res);
+    }
+
+    async teamDetail(id) {
+        const url = `${this.baseUrl}/v1/teams/${id}`;
+        const res = await axios.get(url, {
+            headers: this.headers()
+        });
 
         return this.parseResponse(res);
     }
