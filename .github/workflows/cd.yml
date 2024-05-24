@@ -10,14 +10,15 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js v22
-      uses: actions/setup-node@v3
-      with:
-        node-version: "22.x"
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "dist/"
+      - uses: actions/checkout@v4
+      - name: Use Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: tar -zcvf release.tar.gz dist/
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.tar.gz"
